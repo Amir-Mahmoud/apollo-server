@@ -17,8 +17,18 @@ app.use(cors(), express.json(), expressjwt({
   secret: JWT_SECRET,
 }));
 
+// Used by AWS Elastic Beanstalk for Health Check
 app.get('/',(req,res)=>{
   res.sendStatus(200);
+});
+
+//dummy route for testing
+app.get('/temp1',(req,res)=>{
+  res.send("Temp 1");
+});
+//dummy route for testing
+app.get('/temp2',(req,res)=>{
+  res.send("Remp 2");
 });
 
 app.post('/login', async (req, res) => {
