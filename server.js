@@ -44,7 +44,7 @@ const apolloServer = new ApolloServer({ typeDefs, resolvers, context });
 await apolloServer.start();
 apolloServer.applyMiddleware({ app, path: '/graphql' });
 
-app.listen({ port: PORT }, () => {
+app.listen({ port: PORT }, (url) => {
   console.log(`Server running on port ${PORT}`);
   console.log(`GraphQL endpoint: ${url}`);
 });
