@@ -17,6 +17,10 @@ app.use(cors(), express.json(), expressjwt({
   secret: JWT_SECRET,
 }));
 
+app.get('/',(req,res)=>{
+  res.sendStatus(200);
+});
+
 app.post('/login', async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne((user) => user.email === email);
@@ -42,5 +46,5 @@ apolloServer.applyMiddleware({ app, path: '/graphql' });
 
 app.listen({ port: PORT }, () => {
   console.log(`Server running on port ${PORT}`);
-  console.log(`GraphQL endpoint: http://localhost:${PORT}/graphql`);
+  console.log(`GraphQL endpoint: ${url}`);
 });
